@@ -1,20 +1,56 @@
-let nombres = [];
-let nombresFinal = 0;
-let buscador;
-// LLENAR EL ARRAY CON LOS NOMBRES
-alert('Vamos a guardar listado de nombres.');
-let cantidad = prompt('Digita el numero de nombres que deseas ingresar: ');
-for (let i = 0; i < cantidad; i++) {
-    nombres[i] = prompt('Digita el nombre: ');
-}
-//SABER LA CANTIDAD DE VECES QUE SE REPITE EL NOMBRE DIGITADO EN EL ARRAY
-    alert('Ahora busquemos un nombre que se repite. ');
-    buscador = prompt('Digite el nombre a Buscar: ');
-for (let i = 0; i < nombres.length; i++) {
-    if (nombres[i] === buscador) {
-        nombresFinal++;
+var idCliente;
+var nombreCliente;
+var direccionCliente;
+var telefonoCliente;
+var nombreProducto;
+var precio;
+var cantidad;
+var total;
+var subtotal;
+var iva;
+var subtotalP = 0;
+
+
+
+function generarFactura() {
+
+
+    idCliente = document.getElementById("idCliente").value;
+    nombreCliente = document.getElementById("nombreCliente").value;
+    direccionCliente = document.getElementById("direccionCliente").value;
+    telefonoCliente = document.getElementById("telefonoCliente").value;
+
+
+    for (subtotal = 0; nombreProducto != "*"; subtotal++) {
+
+
+        nombreProducto = prompt('Ingrese Nombre del Producto');
+        document.write("Producto:  " + nombreProducto);
+
+        precio = parseFloat(prompt('Ingrese Precio'));
+        document.write(" <br> Precio:  " + precio);
+
+        cantidad = parseInt(prompt('Ingrese Cantidad'));
+        document.write("<br>  Cantidad:  " + cantidad);
+
+
+        nombreProducto = prompt('Ingrese "*" Para terminar o cualquier tecla para continuar');
+
+        subtotal = precio * cantidad;
+        subtotalP = subtotalP + parseInt(subtotal);
+        iva = subtotalP * 0.19;
+        total = subtotalP + iva;
+
+
+        document.write("<br> SubTotal :" + subtotal);
+
+
     }
+    document.write("<br><br><br><br> ID Cliente:  " + idCliente);
+    document.write("<br> Nombre:  " + nombreCliente);
+    document.write("<br> Direccion:  " + direccionCliente);
+    document.write("<br> Telefono:  " + telefonoCliente);
+
 }
 
-alert(`Los nombres digitados son:  ${nombres}`);
-alert(`El nombre ${buscador} se repite ${nombresFinal} veces.`);
+generarFactura()
